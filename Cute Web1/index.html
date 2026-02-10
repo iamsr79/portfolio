@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festivity.moe - A Curious Festivity!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Neue', cursive;
+        }
+
+        :root {
+            --light-pink: #ffd6e7;
+            --medium-pink: #ff9ec5;
+            --dark-pink: #ff6b9d;
+            --text-color: #5a2d40;
+            --shadow: 0 8px 16px rgba(255, 107, 157, 0.2);
+            --border-radius: 20px;
+        }
+
+        body {
+            background-color: var(--light-pink);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-image: url('bg1.jpg');
+            background-size: cover;
+            background-position: center;
+            /* background-blend-mode: overlay; */
+            background-color: rgba(255, 214, 231, 0.85);
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            backdrop-filter: blur(5px);
+            border: 5px solid var(--medium-pink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -1;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-30px, -30px) rotate(360deg); }
+        }
+
+        .profile-section {
+            margin-bottom: 30px;
+        }
+
+        .profile-pic {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--medium-pink);
+            box-shadow: var(--shadow);
+            margin: 0 auto 20px;
+            display: block;
+            background-color: #fff;
+        }
+
+        .title {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: var(--dark-pink);
+            text-shadow: 3px 3px 0px rgba(255, 182, 193, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .status {
+            font-size: 1.2rem;
+            background-color: var(--light-pink);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 3px dashed var(--dark-pink);
+            font-weight: bold;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            padding: 15px;
+            background-color: rgba(255, 214, 231, 0.5);
+            border-radius: var(--border-radius);
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            max-width: 500px;
+            margin: 30px auto 0;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-color);
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+            border: 3px solid var(--medium-pink);
+            box-shadow: 0 6px 0 var(--dark-pink);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0 var(--dark-pink);
+            background-color: var(--light-pink);
+        }
+
+        .social-link:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 0 var(--dark-pink);
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .social-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--dark-pink);
+            text-align: left;
+        }
+
+        .contact {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: rgba(255, 182, 193, 0.3);
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+        }
+
+        .contact a {
+            color: var(--dark-pink);
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 2px dotted var(--dark-pink);
+        }
+
+        .contact a:hover {
+            color: #ff3d7f;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        .bouncing-emoji {
+            font-size: 2rem;
+            position: absolute;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .emoji-1 { top: 10%; left: 5%; animation-delay: 0s; }
+        .emoji-2 { top: 15%; right: 8%; animation-delay: 0.5s; }
+        .emoji-3 { bottom: 20%; left: 7%; animation-delay: 1s; }
+        .emoji-4 { bottom: 15%; right: 5%; animation-delay: 1.5s; }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .social-link {
+                padding: 12px 15px;
+            }
+            
+            .social-icon {
+                width: 35px;
+                height: 35px;
+                margin-right: 15px;
+            }
+            
+            .social-name {
+                font-size: 1.2rem;
+            }
+            
+            .bouncing-emoji {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .profile-pic {
+                width: 130px;
+                height: 130px;
+            }
+            
+            .social-link {
+                padding: 10px 12px;
+            }
+            
+            .social-icon {
+                width: 30px;
+                height: 30px;
+                margin-right: 12px;
+            }
+            
+            .social-name {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* For tablets and iPads */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
+        }
+        
+        /* Special styling for each social link */
+        .kofi-link {
+            background: linear-gradient(135deg, #ffffff 0%, #fff5f8 100%);
+        }
+        
+        .youtube-link {
+            background: linear-gradient(135deg, #ffffff 0%, #fff0f0 100%);
+        }
+        
+        .x-link {
+            background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+        }
+        
+        .instagram-link {
+            background: linear-gradient(135deg, #ffffff 0%, #fff0f8 100%);
+        }
+        
+        .social-link:hover .social-icon {
+            animation: wiggle 0.5s ease;
+        }
+        
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Fun floating emojis -->
+        <div class="bouncing-emoji emoji-1">🔥</div>
+        <div class="bouncing-emoji emoji-2">🌸</div>
+        <div class="bouncing-emoji emoji-3">✨</div>
+        <div class="bouncing-emoji emoji-4">💫</div>
+        
+        <div class="profile-section">
+            <!-- Profile GIF - replace with your own GIF -->
+            <img src="logo.gif" alt="Festivity Profile GIF" class="profile-pic">
+            
+            <h1 class="title">@lazy_edgar</h1>
+            <p class="tagline">also known as Its Edgar</p>
+            
+            <div class="status">I love adding Glows!</div>
+            
+            <p class="description">
+              I’m a Brawl Stars content creator and also a freelance graphic designer who creates esports posters and related designs. I especially love adding glows to my posters, it’s kind of my signature touch.
+            </p>
+        </div>
+        
+        <div class="social-links">
+              <!-- YouTube -->
+            <a href="https://youtube.com" target="_blank" class="social-link youtube-link">
+                <!-- Replace with your own PNG icon -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/2560px-YouTube_full-color_icon_%282017%29.svg.png" alt="YouTube" class="social-icon">
+                <span class="social-name">@itsedgar79</span>
+            </a>
+            
+
+           <!-- X (Twitter) -->
+            <a href="https://x.com" target="_blank" class="social-link x-link">
+                <!-- Replace with your own PNG icon -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/X_icon_2.svg/2048px-X_icon_2.svg.png" alt="X" class="social-icon">
+                <span class="social-name">My designs</span>
+            </a>
+            
+             <!-- X (Twitter) -->
+            <a href="https://x.com" target="_blank" class="social-link x-link">
+                <!-- Replace with your own PNG icon -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/X_icon_2.svg/2048px-X_icon_2.svg.png" alt="X" class="social-icon">
+                <span class="social-name">@lazy_edgar</span>
+            </a>
+          
+            <!-- X (Twitter) -->
+            <a href="https://x.com" target="_blank" class="social-link x-link">
+                <!-- Replace with your own PNG icon -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/X_icon_2.svg/2048px-X_icon_2.svg.png" alt="X" class="social-icon">
+                <span class="social-name">@iam_edgarrr</span>
+            </a>
+            
+            <!-- Instagram -->
+            <a href="https://instagram.com" target="_blank" class="social-link instagram-link">
+                <!-- Replace with your own PNG icon -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/2048px-Instagram_icon.png" alt="Instagram" class="social-icon">
+                <span class="social-name">@lazy_edgar</span>
+            </a>
+
+             <!-- Ko-fi -->
+            <a href="https://ko-fi.com" target="_blank" class="social-link kofi-link">
+                <!-- Replace with your own PNG icon -->
+                <img src="https://uploads-ssl.webflow.com/5c14e387dab576fe667689cf/61e1116779fc0a9bd5bdbcc7_Frame%206.png" alt="Ko-fi" class="social-icon">
+                <span class="social-name">Ko-fi</span>
+            </a>
+            
+
+        </div>
+        
+        <div class="contact">
+            <p>Contact me through Discord or Instagram!</p>
+             <p> <a href="">Because im highly active there...lol</a></p>
+        </div>
+        
+        <div class="footer">
+            <p>Made with 💖 and lots of laziness!!!</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive fun
+        document.addEventListener('DOMContentLoaded', function() {
+            const socialLinks = document.querySelectorAll('.social-link');
+            
+            socialLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Create a burst of hearts animation on click
+                    for(let i = 0; i < 5; i++) {
+                        createHeartBurst(e.clientX, e.clientY);
+                    }
+                });
+            });
+            
+            function createHeartBurst(x, y) {
+                const heart = document.createElement('div');
+                heart.innerHTML = '💖';
+                heart.style.position = 'fixed';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                heart.style.fontSize = '20px';
+                heart.style.pointerEvents = 'none';
+                heart.style.zIndex = '9999';
+                
+                document.body.appendChild(heart);
+                
+                // Random direction
+                const angle = Math.random() * Math.PI * 2;
+                const velocity = 2 + Math.random() * 3;
+                const vx = Math.cos(angle) * velocity;
+                const vy = Math.sin(angle) * velocity;
+                
+                let posX = x;
+                let posY = y;
+                let opacity = 1;
+                
+                const animate = () => {
+                    posX += vx;
+                    posY += vy;
+                    opacity -= 0.02;
+                    
+                    heart.style.left = posX + 'px';
+                    heart.style.top = posY + 'px';
+                    heart.style.opacity = opacity;
+                    
+                    if (opacity > 0) {
+                        requestAnimationFrame(animate);
+                    } else {
+                        document.body.removeChild(heart);
+                    }
+                };
+                
+                animate();
+            }
+            
+            // Make the status text change randomly every 10 seconds
+            const statusElement = document.querySelector('.status');
+            const statusMessages = [
+                
+                "Probably eating Chocolates!!!",
+                "Watching Naruto maybe...",
+                "I love adding Glows!",
+                "2.6k Subs on youtubeee...woah",
+                "Annoying lazy Kidddd"
+            ];
+            
+            setInterval(() => {
+                const randomIndex = Math.floor(Math.random() * statusMessages.length);
+                statusElement.textContent = statusMessages[randomIndex];
+                
+                // Add a quick animation
+                statusElement.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    statusElement.style.transform = 'scale(1)';
+                }, 300);
+            }, 10000);
+            
+            // Add hover effect to social links
+            socialLinks.forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.social-icon');
+                    icon.style.transform = 'scale(1.1)';
+                });
+                
+                link.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.social-icon');
+                    icon.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
